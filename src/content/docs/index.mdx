@@ -1,0 +1,69 @@
+---
+title: Barta (বার্তা)
+description: Unified Bangladeshi SMS Gateway for Laravel
+template: splash
+hero:
+  tagline: The unified interface for every Bangladeshi SMS gateway. Send OTPs, marketing alerts, or notifications with a beautiful, fluent Laravel API.
+  actions:
+    - text: Get Started
+      link: /getting-started/installation/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/iRaziul/barta
+      icon: github
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Why Barta?
+
+Stop wrestling with gateway SDKs. Barta provides a unified API for all major Bangladeshi SMS gateways with built-in phone formatting, queue support, and Laravel Notifications integration.
+
+<CardGrid stagger>
+	<Card title="14+ Gateways" icon="rocket">
+		SSL Wireless, eSMS, Infobip, Grameenphone, Banglalink, Robi, and more. Switch providers with a single config change.
+	</Card>
+	<Card title="Bulk SMS" icon="list-format">
+		Send to thousands of recipients in a single API call. Automatic chunking and rate limiting included.
+	</Card>
+	<Card title="Queue Ready" icon="approve-check">
+		Dispatch SMS to background jobs for blazing fast response times. Redis, SQS, and database queues supported.
+	</Card>
+	<Card title="Laravel Notifications" icon="email">
+		Native `barta` channel for Laravel's notification system. Send SMS just like emails.
+	</Card>
+	<Card title="BD Phone Validation" icon="approve-check-circle">
+		Automatic normalization to `8801XXXXXXXXX` format. Invalid numbers are caught before hitting the API.
+	</Card>
+	<Card title="Extensible" icon="puzzle">
+		Create custom drivers for any gateway with the simple `AbstractDriver` pattern.
+	</Card>
+</CardGrid>
+
+## Quick Start
+
+```bash
+# Install via Composer
+composer require larament/barta
+
+# Publish configuration
+php artisan barta:install
+```
+
+```php
+use Larament\Barta\Facades\Barta;
+
+Barta::to('01712345678')
+    ->message('Your OTP is 1234')
+    ->send();
+```
+
+## Explore the Docs
+
+<CardGrid>
+	<LinkCard title="Installation" description="Get Barta up and running in minutes." href="/getting-started/installation/" />
+	<LinkCard title="Configuration" description="Configure your SMS gateways." href="/getting-started/configuration/" />
+	<LinkCard title="Gateways" description="Explore all 14+ supported gateways." href="/gateways/index/" />
+	<LinkCard title="Advanced Features" description="Queue support, notifications, and more." href="/advanced/queue-support/" />
+</CardGrid>
